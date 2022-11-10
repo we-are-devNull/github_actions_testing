@@ -1,0 +1,18 @@
+name: Security workflow
+
+on: [pull_request]
+
+#test9
+
+jobs:
+  security-action:
+    uses: <org_name>/appsec-utils/.github/workflows/security.yml@master
+    with:
+      repo: ${{ github.repository }}
+      head_ref: ${{ github.head_ref}}
+      base_ref: ${{github.base_ref }}
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
+      GH_PAT: ${{ secrets.GH_PAT}}
+      SLACK_TOKEN: ${{secrets.SLACK_HOOK_TEST}}
+
